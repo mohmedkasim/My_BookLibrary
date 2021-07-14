@@ -82,15 +82,9 @@ public class Utils {
         return null;
     }
 
-    public boolean addToAlreadyRead(Book book){
+    public boolean addToAlreadyRead(Book book){ return alreadyReadBooks.add(book); }
 
-        return alreadyReadBooks.add(book);
-    }
-
-    public boolean addToWantToRead (Book book){
-
-        return wantToReadyBooks.add(book);
-    }
+    public boolean addToWantToRead (Book book){ return wantToReadyBooks.add(book); }
 
     public boolean addToCurrentlyReading(Book book){
         return currentlyReadingBooks.add(book);
@@ -100,21 +94,13 @@ public class Utils {
         return favoriteBooks.add(book);
     }
 
-    public boolean removeFromAlreadyRead(Book book){
+    public boolean removeFromAlreadyRead(Book book){ return alreadyReadBooks.remove(book); }
 
-        return alreadyReadBooks.remove(book);
-    }
+    public boolean removeFromFav(Book book){ return favoriteBooks.remove(book); }
 
-    public boolean removeFromFav(Book book){
+    public boolean removeFromCurrentlyRead(Book book){ return currentlyReadingBooks.remove(book); }
 
-        return favoriteBooks.remove(book);
-    }
-
-     public boolean removeFromCurrentlyRead(Book book){
-        return currentlyReadingBooks.remove(book);
-     }
-
-     public boolean removeFromWantToRead(Book book){
+    public boolean removeFromWantToRead(Book book){
         return wantToReadyBooks.remove(book);
      }
 }
