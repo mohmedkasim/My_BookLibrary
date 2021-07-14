@@ -60,7 +60,7 @@ public class Utils {
         return alreadyReadBooks;
     }
 
-    public static ArrayList<Book> getWantToReadyBooks() {
+    public static ArrayList<Book> getWantToReadBooks() {
         return wantToReadyBooks;
     }
 
@@ -84,5 +84,15 @@ public class Utils {
 
     public boolean addToAlreadyRead(Book book){
         return alreadyReadBooks.add(book);
+    }
+
+    public boolean addToWantToRead (Book book){
+        return wantToReadyBooks.add(book);
+    }
+    public boolean addToCurrentlyReading(Book book){
+        return currentlyReadingBooks.add(book);
+    }
+    public boolean addToFav(Book book){
+        return favoriteBooks.add(book);
     }
 }
