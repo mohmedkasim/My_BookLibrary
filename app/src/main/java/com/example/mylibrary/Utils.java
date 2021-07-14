@@ -7,7 +7,7 @@ public class Utils {
     private static Utils instance;
 
     private static ArrayList<Book> allBooks;
-    private static ArrayList<Book> alreadyReadyBooks;
+    private static ArrayList<Book> alreadyReadBooks;
     private static ArrayList<Book> wantToReadyBooks;
     private static ArrayList<Book> currentlyReadingBooks;
     private static ArrayList<Book> favoriteBooks;
@@ -18,8 +18,8 @@ public class Utils {
             initData();
         }
 
-        if (null == alreadyReadyBooks){
-            alreadyReadyBooks = new ArrayList<>();
+        if (null == alreadyReadBooks){
+            alreadyReadBooks = new ArrayList<>();
         }
 
         if (null == wantToReadyBooks){
@@ -56,8 +56,8 @@ public class Utils {
         return allBooks;
     }
 
-    public static ArrayList<Book> getAlreadyReadyBooks() {
-        return alreadyReadyBooks;
+    public static ArrayList<Book> getAlreadyReadBooks() {
+        return alreadyReadBooks;
     }
 
     public static ArrayList<Book> getWantToReadyBooks() {
@@ -80,5 +80,9 @@ public class Utils {
         }
 
         return null;
+    }
+
+    public boolean addToAlreadyRead(Book book){
+        return alreadyReadBooks.add(book);
     }
 }

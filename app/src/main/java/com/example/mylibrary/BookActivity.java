@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -33,11 +35,47 @@ public class BookActivity extends AppCompatActivity {
                 Book incomingBook = Utils.getInstance().getBookById(bookId);
                 if (null != incomingBook){
                     setData(incomingBook);
+
+                    handleAlreadyRead(incomingBook);
                 }
             }
         }
 //        setData(book);
     }
+
+    /**
+     * Enable and Disable button,
+     * Add the book to Already Read Book ArrayList
+     * @param incomingBook
+     */
+    private void handleAlreadyRead(Book incomingBook) {
+        ArrayList<Book> alreadyReadBooks = Utils.getInstance().getAlreadyReadBooks();
+
+        boolean existInAlreadyReadBooks = false;
+
+        for (Book b: alreadyReadBooks){
+            if (b.getId() == incomingBook.getId()){
+                existInAlreadyReadBooks = true;
+            }
+        }
+
+        if (existInAlreadyReadBooks) {
+            btnAddToAlreadyRead.setEnabled(false);
+        } else {
+            btnAddToAlreadyRead.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (Utils.getInstance().addToAlreadyRead(incomingBook)) {
+                        Toast.makeText(BookActivity.this, "Book Added", Toast.LENGTH_SHORT).show();
+                        // TODO: navigate the user
+                    } else {
+                        Toast.makeText(BookActivity.this, "Something wrong happened, try again", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
     private void initViews(){
         txtAuthor = findViewById(R.id.AuthorText);
         txtBookName = findViewById(R.id.txtBook);
