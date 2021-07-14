@@ -83,16 +83,38 @@ public class Utils {
     }
 
     public boolean addToAlreadyRead(Book book){
+
         return alreadyReadBooks.add(book);
     }
 
     public boolean addToWantToRead (Book book){
+
         return wantToReadyBooks.add(book);
     }
+
     public boolean addToCurrentlyReading(Book book){
         return currentlyReadingBooks.add(book);
     }
+
     public boolean addToFav(Book book){
         return favoriteBooks.add(book);
     }
+
+    public boolean removeFromAlreadyRead(Book book){
+
+        return alreadyReadBooks.remove(book);
+    }
+
+    public boolean removeFromFav(Book book){
+
+        return favoriteBooks.remove(book);
+    }
+
+     public boolean removeFromCurrentlyRead(Book book){
+        return currentlyReadingBooks.remove(book);
+     }
+
+     public boolean removeFromWantToRead(Book book){
+        return wantToReadyBooks.remove(book);
+     }
 }
