@@ -2,6 +2,7 @@ package com.example.mylibrary;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -12,7 +13,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 public class BookActivity extends AppCompatActivity {
-
+    public static final String BOOK_ID_KEY =  "bookId";
     private TextView txtBookName, txtAuthor, txtPages, txtDescription;
     private Button btnAddToWantToRead, btnAddToAlreadyRead, btnAddToCurrentlyReading, btnAddToFav;
     private ImageView bookImage;
@@ -22,10 +23,20 @@ public class BookActivity extends AppCompatActivity {
         setContentView(R.layout.activity_book);
 
         initViews();
-        String longDesc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
-        Book book = new Book(1,"The Da Vinci Code","Dave", 100,"https://upload.wikimedia.org/wikipedia/en/thumb/e/e9/The_da_vinci_code_final.jpg/220px-The_da_vinci_code_final.jpg","short Description",longDesc);
+//        String longDesc = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
+//        Book book = new Book(1,"The Da Vinci Code","Dave", 100,"https://upload.wikimedia.org/wikipedia/en/thumb/e/e9/The_da_vinci_code_final.jpg/220px-The_da_vinci_code_final.jpg","short Description",longDesc);
 
-        setData(book);
+        Intent intent = getIntent();
+        if (null != intent){
+            int bookId = intent.getIntExtra(BOOK_ID_KEY, -1);
+            if (bookId != -1) {
+                Book incomingBook = Utils.getInstance().getBookById(bookId);
+                if (null != incomingBook){
+                    setData(incomingBook);
+                }
+            }
+        }
+//        setData(book);
     }
     private void initViews(){
         txtAuthor = findViewById(R.id.AuthorText);

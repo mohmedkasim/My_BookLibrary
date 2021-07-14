@@ -23,8 +23,7 @@ public class SeeAllBooks extends AppCompatActivity {
         booksRecView.setAdapter(adapter);
         booksRecView.setLayoutManager(new LinearLayoutManager(this));
 
-        ArrayList<Book> books = new ArrayList<>();
-        books.add(new Book(1,"The Da Vinci Code","Dave", 100,"https://upload.wikimedia.org/wikipedia/en/thumb/e/e9/The_da_vinci_code_final.jpg/220px-The_da_vinci_code_final.jpg","short Description","Long Description"));
-        adapter.setBooks(books);
+
+        adapter.setBooks(Utils.getInstance().getAllBooks());
     }
 }
