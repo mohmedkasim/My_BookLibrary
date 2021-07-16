@@ -77,6 +77,6 @@ public class MainActivity extends AppCompatActivity {
                 builder.create().show();
             }
         });
-        Utils.getInstance();
+        Utils.getInstance(this);
     }
 }
